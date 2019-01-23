@@ -2,21 +2,16 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router'
 import { connect } from 'react-redux'
 
-import Home from './containers/Home';
-
-import { fetchPosts, fetchPages } from './actions/wp'
+import Home from './pages/Home';
+import About from './pages/About';
 
 class App extends Component {
-  componentWillMount() {
-    const { dispatch } = this.props
-    dispatch(fetchPosts())
-    dispatch(fetchPages())
-  }
   render() {
     return (
       <div className="App">
         <Switch>
           <Route exact path="/" component={ Home } />
+          <Route path="/about" component={ About } />
         </Switch>
       </div>
     );

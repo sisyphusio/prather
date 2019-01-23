@@ -5,6 +5,11 @@ const INITIAL_STATE = {
     posts: [],
     isFetchingPages: false,
     pages: [],
+    isFetchingPageContent: false,
+    content: {
+        pageContent: null,
+        acfContent: null,
+    },
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -17,6 +22,17 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, isFetchingPages: true }
         case wpActions.PAGES_FETCHED:
             return { ...state, pages: action.pages, isFetchingPages: false }
+        case wpActions.FETCHING_PAGE_CONTENT:
+            return { ...state, isFetchingPageContent: true }
+        case wpActions.PAGE_CONTENT_FETCHED:
+            return {
+                ...state,
+                isFetchingPageContent: false,
+                content: {
+                    pageContent: action.pageContent,
+                    acfContent: action.acfContent
+                }
+            }
         default:
             return state
     }
