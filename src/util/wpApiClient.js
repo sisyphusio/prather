@@ -1,10 +1,6 @@
 import axios from 'axios';
 
-// Local WP instance
-// const URL = 'http://prather.dv'
-
-// AWS Dev Server
-const URL = 'http://18.212.59.172'
+const URL = 'http://s29554.p832.sites.pressdns.com'
 
 export default {
     fetchPosts: () => {
@@ -24,8 +20,11 @@ export default {
             .then(resp => {
                 const page = resp.data[0]
                 const pageContent = page.content.rendered
-                const acf = page.acf
-                const acfContent = { ...acf, type: acf['acf_fc_layout'] }
+                const acf = page.acf.block
+                const acfContent = acf.map(content => ({
+                    ...content,
+                    type: content['acf_fc_layout']
+                }))
 
                 return { pageContent, acfContent }
             })

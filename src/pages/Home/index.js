@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import ReactHtmlParser from 'react-html-parser'
 import { fetchPageContent } from '../../actions/wp'
+import mapAcfToReact from '../../util/mapAcfToReact'
 
 class Home extends Component {
     componentWillMount() {
@@ -9,12 +10,13 @@ class Home extends Component {
     }
 
     render() {
-        const { pageContent } = this.props
+        const { acfContent, pageContent } = this.props
         return (
             <Fragment>
                 <section>
                     { ReactHtmlParser(pageContent) }
                 </section>
+                { acfContent.map(mapAcfToReact) }
             </Fragment>
         )
     }

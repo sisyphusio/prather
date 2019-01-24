@@ -8,7 +8,7 @@ const INITIAL_STATE = {
     isFetchingPageContent: false,
     content: {
         pageContent: null,
-        acfContent: null,
+        acfContent: [],
     },
 }
 
