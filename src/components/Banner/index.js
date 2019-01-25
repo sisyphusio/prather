@@ -6,8 +6,10 @@ import styles from './styles.module.scss'
 const Banner = ({ background_image, title, content }) => {
     return (
         <div className={styles.container} style={{ backgroundImage: `url(${background_image.url})` }}>
-            <h2>{ title }</h2>
-            { ReactHtmlParser(content) }
+            <div className={styles.content}>
+                <h2>{ title }</h2>
+                { ReactHtmlParser(content) }
+            </div>
         </div>
     )
 }
