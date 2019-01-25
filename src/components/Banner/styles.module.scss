@@ -1,0 +1,13 @@
+.container {
+    min-height: 20rem;
+    background-size: cover;
+    background-position: center center;
+    max-height: 40rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    h2 {
+        color: white;
+    }
+}

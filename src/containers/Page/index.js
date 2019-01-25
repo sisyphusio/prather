@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import mapAcfToReact from '../util/mapAcfToReact'
-import { fetchPageContent } from '../actions/wp'
+import mapAcfToReact from '../../util/mapAcfToReact'
+import { fetchPageContent } from '../../actions/wp' 
 
 class Page extends Component {
     componentWillMount() {

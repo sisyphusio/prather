@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ReactHtmlParser from 'react-html-parser'
-import styles from './styles.scss'
+import styles from './styles.module.scss'
 
 const Banner = ({ background_image, title, content }) => {
     return (

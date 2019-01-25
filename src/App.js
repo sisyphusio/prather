@@ -3,8 +3,10 @@ import { Route, Switch } from 'react-router'
 import { connect } from 'react-redux'
 
 import Header from './components/Header'
-import Page from './containers/page'
+import Page from './containers/Page'
 import { fetchPages } from './actions/wp'
+
+import Styles from './styles.scss'
 
 class App extends Component {
     componentWillMount() {
