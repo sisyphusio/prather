@@ -1,5 +1,3 @@
-@import '../../styles/config/moduleIncludes.scss';
-
 .header {
     width: 100%;
     position: relative;
@@ -10,10 +8,12 @@
     backface-visibility: hidden;
 
     .container {
-        @include flex();
-        .menu {
-            @include flex();
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
+        .menu {
+            display: flex;
             li {
                 list-style: none;
                 padding: 1rem;

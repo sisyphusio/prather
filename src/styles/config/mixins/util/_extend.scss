@@ -1,7 +1,0 @@
-/*--------------------------------------------------------*\
-    Extend // Object Assign
-\*--------------------------------------------------------*/
-
-@function extend($options, $defaults) {
-    @return map-merge($options, $defaults);
-}
