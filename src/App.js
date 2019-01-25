@@ -4,17 +4,11 @@ import { connect } from 'react-redux'
 
 import Header from './components/Header'
 import Page from './containers/page'
-import { fetchPages, fetchPageContent } from './actions/wp'
+import { fetchPages } from './actions/wp'
 
 class App extends Component {
     componentWillMount() {
         this.props.dispatch(fetchPages())
-        this.props.dispatch(fetchPageContent(this.props.selectedPage))
-    }
-
-    componentDidUpdate(prevProps) {
-        if (this.props.selectedPage !== prevProps.selectedPage)
-            this.props.dispatch(fetchPageContent(this.props.selectedPage))
     }
 
     render() {
