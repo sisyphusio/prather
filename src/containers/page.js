@@ -5,14 +5,14 @@ import { fetchPageContent } from '../actions/wp'
 
 class Page extends Component {
     componentWillMount() {
-        const { dispatch, title } = this.props
-        dispatch(fetchPageContent(title))
+        const { dispatch, currentPage } = this.props
+        dispatch(fetchPageContent(currentPage))
     }
 
     componentDidUpdate(prevProps) {
-        const { dispatch, title } = this.props
-        if (title !== prevProps.title)
-            dispatch(fetchPageContent(title))
+        const { dispatch, currentPage } = this.props
+        if (currentPage !== prevProps.currentPage)
+            dispatch(fetchPageContent(currentPage))
     }
     render() {
         const { acfContent } = this.props
@@ -25,8 +25,8 @@ class Page extends Component {
 }
 
 const mapStateToProps = state => {
-    const { wp: { content: { acfContent, pageContent } } } = state
-    return { acfContent, pageContent }
+    const { wp: { content: { acfContent, pageContent }, currentPage } } = state
+    return { acfContent, pageContent, currentPage }
 }
     
 export default connect(mapStateToProps)(Page)

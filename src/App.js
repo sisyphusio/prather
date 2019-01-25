@@ -12,33 +12,32 @@ class App extends Component {
     }
 
     render() {
-        const { pageTitles, selectedPage } = this.props
+        const { pageData, currentPage } = this.props
         return (
-        <div className="App">
-            <Header routes={ pageTitles } selectedPage={ selectedPage }/>
-            <Switch>
-                { pageTitles.map(title => 
-                    <Route
-                        path={`/${title}`}
-                        render={(props) => <Page {...props} title={title} />}
-                    />
-                )}
-            </Switch>
-        </div>
+            <div className="App">
+                <Header routes={ pageData } selectedPage={ currentPage }/>
+                <Switch>
+                    { pageData.map(({ title, slug }) =>
+                        <Route path={`/${slug}`} component={Page} />
+                    )}
+                </Switch>
+            </div>
         );
     }
 }
 
 const mapStateToProps = state => {
-    const { wp, router } = state
-    const { pages } = wp
-    const pageTitles = pages
+    const { wp } = state
+    const { pages, currentPage } = wp
+    const pageData = pages
         .sort((a, b) => a.menu_order - b.menu_order)
-        .map(page => page.slug)
+        .map(page => ({
+            title: page.title.rendered,
+            slug: page.slug
+        }))
+        .map(page => page.slug === 'home' ? { ...page, slug: '' } : page)
 
-    const selectedPage = router.location.pathname.split('/')[1] || 'home'
-
-    return { pageTitles, selectedPage }
+    return { pageData, currentPage }
 }
 
 

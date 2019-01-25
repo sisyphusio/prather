@@ -1,6 +1,8 @@
 import { actions as wpActions } from '../actions/wp'
+import { LOCATION_CHANGE } from 'connected-react-router'
 
 const INITIAL_STATE = {
+    currentPage: 'home',
     isFetchingPosts: false,
     posts: [],
     isFetchingPages: false,
@@ -14,6 +16,9 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case LOCATION_CHANGE:
+            const currentPage = action.payload.location.pathname.split('/')[1] || 'home'
+            return { ...state, currentPage }
         case wpActions.FETCHING_POSTS:
             return { ...state, isFetchingPosts: true }
         case wpActions.POSTS_FETCHED:

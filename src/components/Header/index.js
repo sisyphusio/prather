@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 import styles from './header.module.scss'
 
 const menuItem = (route, selectedPage) => {
+    const { slug, title } = route
     return (
         <li
-            className={`${ route === selectedPage ? `${styles.selected}` : '' }`}
-            key={ `menu__item--${route}` }>
-            <Link to={ route }>{ route }</Link>
+            className={`${ title.toLowerCase().replace(' ', '-') === selectedPage ? `${styles.selected}` : '' }`}
+            key={ `menu__item--${slug}` }>
+            <Link to={ slug }>{ title }</Link>
         </li>
     )
 }
