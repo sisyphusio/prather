@@ -14,6 +14,6 @@ export default (acfContent) => {
         case 'bio':
             return <Bio { ...props } />
         default:
-            return <div>Content Not Found</div>
+            return ''
     }
 }

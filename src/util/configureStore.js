@@ -1,7 +1,3 @@
-/*--------------------------------------------------------*\
-    create store
-\*--------------------------------------------------------*/
-
 import { routerMiddleware } from 'connected-react-router'
 import { createLogger } from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
