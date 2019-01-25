@@ -1,0 +1,9 @@
+/*--------------------------------------------------------*\
+    fonts => body (proxima)
+\*--------------------------------------------------------*/
+
+@import "raw";
+
+@mixin body($size: 1rem, $weight: 400, $lineHeight: 1.25, $style: normal) {
+    @include proxima($size, $weight, $lineHeight, $style);
+}

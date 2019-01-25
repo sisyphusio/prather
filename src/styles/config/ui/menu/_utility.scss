@@ -1,0 +1,29 @@
+/*--------------------------------------------------------*\
+	Utility Menu
+\*--------------------------------------------------------*/
+
+.menu {
+
+	&--utility {
+		width: 100%;
+		margin: 2rem 0;
+
+		@include m(480) {
+			margin: 1rem 0;
+		}
+
+		.block--isotope & {
+			margin: 3.5rem 0;
+
+			@include m(768) {
+				margin: 2.5rem 0;
+			}
+		}
+	}
+
+	&__item {
+		position: relative;
+		cursor: pointer;
+		@include separator();
+	}
+}

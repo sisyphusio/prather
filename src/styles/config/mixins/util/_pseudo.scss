@@ -1,0 +1,145 @@
+/*--------------------------------------------------------*\
+	Pseudo Elements
+
+    todo:
+
+    - take the position out of config so i can actually
+    type check the data types without them defaulting to
+    what i'm checking them against
+
+    - position can't be passed in with only partial declarations:
+    i.e., if you pass in only { top, left  } the position
+    returned is { 0, 0, 0, 0 } by default.
+\*--------------------------------------------------------*/
+
+@function getPosition($position, $center) {
+    $centerX: map-get($center, x);
+    $centerY: map-get($center, y);
+
+    @if (isMap($center) and ($centerX == true or $centerY == true)) {
+        @if (isDefined($centerX) and ($centerY == false or $centerY == null)) {
+            @if (isBoolean($centerX)) {
+                @return (
+                    left: 50%,
+                    transform: translateX(-50%),
+                );
+            }
+
+            @else {
+                @return (
+                    left: $centerX,
+                    transform: translateX(-50%),
+                );
+            }
+        }
+
+        @else if (isDefined($centerY) and ($centerX == false or $centerY == null)) {
+            @if (isBoolean($centerX)) {
+                @return (
+                    top: 50%,
+                    transform: translateX(-50%),
+                );
+            }
+
+            @else {
+                @return (
+                    top: $centerY,
+                    transform: translateX(-50%),
+                );
+            }
+        }
+    }
+
+    @if ($center == true) {
+        @return (
+            top: 50%,
+            left: 50%,
+            transform: translate(-50%, -50%),
+        );
+    }
+
+    @if (isMap($position) and not isNull($position)) {
+        $top: map-get($position, top);
+        $left: map-get($position, left);
+        $bottom: map-get($position, bottom);
+        $right: map-get($position, right);
+        @return (
+            top: $top,
+            right: $right,
+            bottom: $bottom,
+            left: $left,
+        );
+    }
+
+    @return (
+        top: initial,
+        right: initial,
+        bottom: initial,
+        left: initial,
+    );
+}
+
+@mixin pseudo($config: ()) {
+    $config: extend(
+        (
+            content: '',
+            relative: false,
+            position: (
+                top: 0,
+                left: 0,
+                bottom: 0,
+                right: 0,
+            ),
+            center: (
+                x: false,
+                y: false,
+            ),
+            size: (
+                width: 100%,
+                height: 100%,
+            ),
+            backgroundColor: rgba($body, 0.10),
+            zIndex: 10,
+            pseudo: after,
+        ), $config
+    );
+
+    $content: map-get($config, content);
+    $size: map-get($config, size);
+    $width: map-get($size, width);
+    $height: map-get($size, height);
+    $relative: map-get($config, relative);
+    $position: map-get($config, position);
+    $top: map-get($position, top);
+    $left: map-get($position, left);
+    $bottom: map-get($position, bottom);
+    $right: map-get($position, right);
+    $center: map-get($config, center);
+    $backgroundColor: map-get($config, backgroundColor);
+    $zIndex: map-get($config, zIndex);
+    $pseudo: map-get($config, pseudo);
+
+    // @debug((
+    //     'center': isNull($centerY),
+    //     'centerY': $centerY,
+    //     'getPosition': getPosition($position, $center),
+    // ));
+
+    &::#{$pseudo} {
+        content: $content;
+        width: $width;
+        height: $height;
+        position: if($relative == true, relative, absolute);
+        top: $top;
+        right: $right;
+        bottom: $bottom;
+        left: $left;
+        background-color: $backgroundColor;
+        z-index: $zIndex;
+        @content;
+    }
+
+    > .container {
+        z-index: $zIndex + 1;
+    }
+}

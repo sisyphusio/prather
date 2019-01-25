@@ -1,0 +1,29 @@
+/*--------------------------------------------------------*\
+    navigation
+\*--------------------------------------------------------*/
+
+@import '../../styles/config/moduleIncludes.scss';
+
+.header {
+    width: 100%;
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    padding: 1.5rem 0;
+    transition: all 0.5s ease;
+    backface-visibility: hidden;
+
+    .container {
+        @include flex();
+        
+        .logo {
+            @include flexItem(0, 1, 15rem);
+            margin-right: 5rem;
+        }
+        
+        .navigation {
+            @include flexItem(0, 1, auto);
+        }
+    }
+}

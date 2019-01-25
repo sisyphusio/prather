@@ -1,0 +1,28 @@
+/*--------------------------------------------------------*\
+	Search => Page
+\*--------------------------------------------------------*/
+
+.block.block--search {
+	// padding: 10rem 0 5rem;
+}
+
+.header--search {
+	margin-bottom: 3.5rem;
+
+	h3 {
+		text-transform: uppercase;
+	}
+}
+
+.searchResult {
+
+	&__item {
+		width: 100%;
+		padding: 1rem 0;
+		border-top: 1px solid $grey--border;
+
+		&:last-child {
+			border-bottom: 1px solid $grey--border;
+		}
+	}
+}

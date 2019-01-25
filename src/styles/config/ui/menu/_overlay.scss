@@ -1,0 +1,94 @@
+/*--------------------------------------------------------*\
+	Menu Icon
+
+    todo:
+        - like everything else, i should just make this
+        a mixin with opts/config for ease of use.
+\*--------------------------------------------------------*/
+
+.overlay__open {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+	width: 2rem;
+	height: 1.375rem;
+	cursor: pointer;
+	transition: all 1s $timing;
+	margin-left: 2rem;
+    z-index: 100;
+    display: none;
+
+    @include m(768) {
+        display: flex;
+    }
+}
+
+.open__icon,
+.open__icon::before,
+.open__icon::after {
+	position: absolute;
+	content: '';
+	display: block;
+	width: 2rem;
+	height: 0.125rem;
+	background-color: $blue;
+	border-radius: 1px;
+    transform-origin: center center;
+	transition: all 1s $timing;
+
+	.overlay--active & {
+		background-color: $blue;
+	}
+
+    .wrapper--single--team & {
+        background-color: $blue;
+    }
+}
+
+.open__icon {
+    position: relative;
+	transition: all 1s $timing;
+
+    &::before {
+        top: -0.5rem;
+    }
+
+    &::after {
+        top: 0.5rem;
+    }
+}
+
+.overlay__open:not(.overlay__open--active):hover .open__icon {
+	&::before {
+		top: -0.625rem;
+	}
+	&::after {
+		top: 0.625rem;
+	}
+}
+
+
+.overlay__open--active {
+    &:hover {
+        transform: rotate(90deg);
+    }
+
+    .open__icon {
+        background-color: transparent;
+        &::before,
+        &::after {
+            background-color: $blue;
+        }
+
+        &::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+
+        &::after {
+            top: 0;
+            transform: rotate(-45deg);
+        }
+    }
+}

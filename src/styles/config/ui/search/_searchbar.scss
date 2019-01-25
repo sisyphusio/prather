@@ -1,0 +1,123 @@
+/*--------------------------------------------------------*\
+	Search => Header
+\*--------------------------------------------------------*/
+
+.search__trigger svg {
+	width: 0.75rem;
+	height: 0.75rem;
+}
+
+.search__trigger {
+	a, .searchbar__input {
+		display: inline-block;
+	}
+
+	&.searchBox--active {
+
+		.searchbar__input {
+			width: 15rem;
+			transition: all 1s $timing;
+		}
+
+		.search__input--global {
+			padding: 0.25rem 0.375rem;
+			border: 0.0625rem solid $blue;
+		}
+
+		.search__close {
+			opacity: 1;
+		}
+
+		a {
+			display: none;
+		}
+	}
+
+	.searchbar__input {
+		width: 0;
+		position: relative;
+		transition: all 0.25s $timing;
+
+		@include m(1024) {
+			width: 15rem;
+			transition: all 1s $timing;
+
+			.search__close {
+				opacity: 1;
+			}
+
+			a {
+				display: none;
+			}
+		}
+	}
+}
+
+.search__input--global {
+	width: 100%;
+	@include rg(1rem, 1.25);
+	padding: 0.25rem 0;
+	border: 0;
+	border-radius: 0.125rem;
+	outline: 0;
+	background-color: #fff;
+	color: $body;
+	position: relative;
+	transition: all 1s $timing;
+
+	@include m(1024) {
+		padding: 0.25rem 0.375rem;
+		border: 0.0625rem solid $blue;
+	}
+
+	&::-webkit-input-placeholder {
+		@include rg(1rem, 1.25);
+		color: $body;
+	}
+	&::-moz-placeholder {
+		@include rg(1rem, 1.25);
+		color: $body;
+	}
+	&:-ms-input-placeholder {
+		@include rg(1rem, 1.25);
+		color: $body;
+	}
+}
+
+.search__close {
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+	width: 0.75rem;
+	height: 0.75rem;
+	transform: rotate(45deg);
+	cursor: pointer;
+	z-index: 10;
+	opacity: 0;
+	transition: opacity 1s $timing;
+
+	&::before, &::after {
+		content: '';
+		position: absolute;
+		background-color: $body;
+		width: 0.75rem;
+		height: 1px;
+		display: block;
+	}
+	&::before {
+		transform: rotate(90deg);
+		left: 0;
+		top: 0.5rem;
+	}
+	&::after {
+		left: 0;
+		top: 0.5rem;
+	}
+
+	&:hover {
+		&::before,
+		&::after {
+			background-color: $orange;
+		}
+	}
+}

@@ -1,0 +1,55 @@
+/*--------------------------------------------------------*\
+	Media Queries
+
+	TODO: Include $height && $heightEnd
+
+    TODO: take an array of styles and breakpoints?
+\*--------------------------------------------------------*/
+
+@mixin m($width, $widthEnd: false) {
+	@if ($widthEnd == false) {
+		@if ( $width > 200 ) {
+			@media (max-width: em($width)) {
+				@content;
+			}
+		} @else {
+			@media (max-width: #{$width}em) {
+				@content;
+			}
+		}
+	} @else {
+		@if ( $width > 200 ) {
+			@media (max-width: em($width)) and (min-width: em($widthEnd)) {
+				@content;
+			}
+		} @else {
+			@media (max-width: #{$width}em) and (min-width: #{$width}em) {
+				@content;
+			}
+		}
+	}
+}
+
+@mixin mh($height, $heightEnd: false) {
+	@if ($heightEnd == false) {
+		@if ( $height > 200 ) {
+			@media (max-height: em($height)) {
+				@content;
+			}
+		} @else {
+			@media (max-height: #{$height}em) {
+				@content;
+			}
+		}
+	} @else {
+		@if ( $height > 200 ) {
+			@media (max-height: em($height)) and (min-height: em($heightEnd)) {
+				@content;
+			}
+		} @else {
+			@media (max-height: #{$height}em) and (min-height: #{$height}em) {
+				@content;
+			}
+		}
+	}
+}

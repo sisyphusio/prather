@@ -1,0 +1,22 @@
+/*--------------------------------------------------------*\
+	main
+\*--------------------------------------------------------*/
+
+@import
+    "config/reset",
+    "config/index",
+    "~slick-carousel/slick/slick.css",
+    "~slick-carousel/slick/slick-theme.css";
+
+/*--------------------------------------------------------*\
+    globals
+\*--------------------------------------------------------*/
+
+@import "globals/carousel";
+
+.block--banner {
+    .content {
+        width: 100%;
+        max-width: 48rem;
+    }
+}

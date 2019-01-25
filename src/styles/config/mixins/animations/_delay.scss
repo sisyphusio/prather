@@ -1,0 +1,12 @@
+/*--------------------------------------------------------*\
+    Delay =>
+        - nth child loop for transition and animation delays
+\*--------------------------------------------------------*/
+
+@mixin delay($n, $timing, $prop: transition) {
+    @for $i from 1 through $n {
+        &:nth-child(#{$i}) {
+            #{$prop}-delay: #{$i * $timing}s;
+        }
+    }
+}

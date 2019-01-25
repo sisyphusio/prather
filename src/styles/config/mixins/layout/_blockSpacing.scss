@@ -1,0 +1,27 @@
+/*--------------------------------------------------------*\
+    Block Spacing
+        - Deprecated?
+        - TODO: make style an array to apply across padding/margin, etc.
+\*--------------------------------------------------------*/
+
+@mixin blockSpacing($style, $mutate: 0rem) {
+    @if ($mutate != 0) {
+        #{$style}: #{5rem + $mutate};
+        @include m(768) {
+            #{$style}: #{4rem + $mutate};
+        }
+        @include m(480) {
+            #{$style}: #{3.5rem + $mutate};
+        }
+    }
+
+    @else {
+        #{$style}: 5rem;
+        @include m(768) {
+            #{$style}: 4rem;
+        }
+        @include m(480) {
+            #{$style}: 3.5rem;
+        }
+    }
+}

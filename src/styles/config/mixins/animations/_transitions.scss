@@ -1,0 +1,27 @@
+/*--------------------------------------------------------*\
+    Transitions
+
+    old button timing:
+        - cubic-bezier(0.2, 1, 0.3, 1);
+\*--------------------------------------------------------*/
+
+$timing: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$transition__timing: 0.25s;
+$transition__fx: ease-in;
+$transition: (
+    'timing': 0.35s,
+    'timingFunction': ease
+);
+
+@mixin transition($prop...) {
+    @if ($prop) {
+        transition-property: $prop;
+    }
+
+    @else {
+        transition-property: color;
+    }
+
+    transition-duration: map-get($transition, 'timing');
+    transition-timing-function: map-get($transition, 'timingFunction');
+}

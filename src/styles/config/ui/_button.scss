@@ -1,0 +1,151 @@
+/*--------------------------------------------------------*\
+    links
+\*--------------------------------------------------------*/
+
+a.link {
+    color: $blue;
+    @include transition(color);
+
+    &:hover {
+        color: $blue;
+    }
+
+    &--external {}
+}
+
+/*--------------------------------------------------------*\
+	button
+\*--------------------------------------------------------*/
+
+@mixin buttonContainer($position: center, $margin: ('top': 3.5rem)) {
+
+    // make sure position is a prop and not a string, correct if string is passed
+    @if (isString($position)) {
+        $position: unquote($position);
+    }
+
+    // main styles
+    display: block;
+    width: 100%;
+    text-align: $position;
+
+    // map margin for each direction
+    @if (not isMap($margin) or (isMap($margin) and length($margin) == 0)) {
+        margin: 0;
+    }
+
+    @if (isMap($margin) and length($margin) >= 1) {
+        @each $position, $value in $margin {
+            $position: unquote($position);
+            margin-#{$position}: $value;
+        }
+    }
+
+    &--flex {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .button {
+        @include button();
+    }
+}
+
+@mixin button($config: ()) {
+
+    // config
+    $config: extend((
+        color: $blue,
+        hover: $blue,
+        active: $blue,
+        size: '',
+    ), $config);
+
+    // vars
+    $color: map-get($config, color);
+    $hover: map-get($config, hover);
+    $active: map-get($config, active);
+    $size: if(map-get($config, size) == small, 1rem, 1.5rem);
+
+    // styles
+    position: relative;
+    color: $color;
+    background-color: transparent;
+    padding-bottom: 0.25rem;
+    @include heading($size, 500);
+    text-transform: uppercase;
+    position: relative;
+    @include transition(padding);
+    cursor: pointer;
+    outline: none;
+    @include pseudo($config: (
+        backgroundColor: $color,
+        size: (
+            width: 100%,
+            height: 0.25rem,
+        ),
+        position: (
+            top: 100%,
+            left: 0,
+            bottom: initial,
+            right: initial,
+        ),
+    ));
+
+    &:hover {
+        padding: 0 1rem 0.25rem 1rem;
+    }
+
+    &--active {
+        background-color: $active;
+        color: $white;
+        border-color: $white;
+    }
+
+    &--small {
+        font-size: 1rem;
+        &::after {
+            height: 0.1875rem;
+        }
+    }
+}
+
+// TODO: Is there a way to not double down on these declarations?
+.button__container {
+    @include buttonContainer();
+
+    &--left {
+        @include buttonContainer($position: left);
+    }
+
+    &--right {
+        @include buttonContainer($position: right);
+    }
+}
+
+button {
+	outline: none;
+}
+
+/*--------------------------------------------------------*\
+    video button
+\*--------------------------------------------------------*/
+
+.button--video {
+    width: 2.5rem;
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    cursor: pointer;
+
+    path {
+        stroke: $white;
+        @include transition(fill);
+    }
+
+    &:hover {
+        path {
+            fill: $white;
+        }
+    }
+}
