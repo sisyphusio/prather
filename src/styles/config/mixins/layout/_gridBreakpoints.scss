@@ -1,0 +1,77 @@
+/*--------------------------------------------------------*\
+    Grid Breakpoints =>
+        Loop for basic grids.
+        Enter breakpoints and it will create $x amount of
+        grid widths with matching nth-child declarations
+
+    Examples:
+        @include gridBreakpoints(
+            $breakpoints: (480, 640, 768, 960, 1024, 1280),
+            $margin: 5rem
+        );
+
+        @include gridBreakpoints(
+            $breakpoints: (
+                480: 1rem,
+                768: 2rem,
+                1024: 3rem,
+                1280: 4rem,
+            ),
+            $margin: 5rem
+        );
+
+    In the second example, the $margin argument isn't really needed,
+    but could probably be used for a "default/fallback" margin.
+
+\*--------------------------------------------------------*/
+
+@mixin gridBreakpoints($breakpoints, $margin: 1rem, $isotope: false) {
+    $length: length($breakpoints);
+    @if (isMap($breakpoints)) {
+        $index: 1;
+        @each $breakpoint, $margin in $breakpoints {
+            $width: $index + 1;
+
+            width: 100%;
+            margin-right: 0;
+            @media(min-width: em($breakpoint)) {
+                width: width($width, $margin);
+
+                @if ($isotope == false) {
+                    margin-right: $margin;
+                }
+
+                @if ($index > 1) {
+                    &:nth-child(#{$index}n) {
+                        margin-right: 0;
+                    }
+                }
+            }
+            $index: $index + 1;
+        }
+    }
+
+    @else {
+        @for $index from 1 through $length {
+            $width: $index + 1;
+            $breakpoint: nth($breakpoints, $index);
+
+            width: 100%;
+            margin-right: 0;
+            @media (min-width: em($breakpoint)) {
+                width: width($width, $margin);
+
+                @if ($isotope == false) {
+                    margin-right: $margin;
+                }
+
+
+                @if ($index > 1) {
+                    &:nth-child(#{$index}n) {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+/*--------------------------------------------------------*\
+    Common Icon Styles
+\*--------------------------------------------------------*/
+
+.icon__container {
+    &--playButton {
+        &, svg {
+            width: 3.25rem;
+            height: 3.25rem;
+        }
+
+        svg path {
+            stroke: $white;
+            @include transition(fill);
+        }
+    }
+}
+
+// If playButton is a child of a modal trigger, automatically add the hover state.
+.modal__trigger:hover {
+    .icon__container {
+        &--playButton {
+            svg path {
+                fill: $white !important;
+            }
+        }
+    }
+}

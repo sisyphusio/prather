@@ -1,0 +1,30 @@
+/*--------------------------------------------------------*\
+    Typography
+\*--------------------------------------------------------*/
+
+@mixin light($size, $lineHeight: 1.5, $style: normal) {
+    font-family: arial;
+    font-family: 'PlainLight', helvetica, arial, sans-serif;
+    font-weight: 400;
+    font-size: $size;
+    line-height: $lineHeight;
+    font-style: $style;
+}
+
+@mixin regular($size, $lineHeight: 1.5, $style: normal) {
+    font-family: arial;
+    font-family: 'PlainRegular', helvetica, arial, sans-serif;
+    font-weight: 500;
+    font-size: $size;
+    line-height: $lineHeight;
+    font-style: $style;
+}
+
+@mixin medium($size, $lineHeight: 1.5, $style: normal) {
+    font-family: arial;
+    font-family: 'PlainMedium', helvetica, arial, sans-serif;
+    font-weight: 700;
+    font-size: $size;
+    font-style: $style;
+    line-height: $lineHeight;
+}

@@ -1,0 +1,38 @@
+/*--------------------------------------------------------*\
+    spacing => { margin, padding }
+\*--------------------------------------------------------*/
+
+@mixin spacing(
+    $type: margin,
+    $keys: (
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+    ),
+    $last: true,
+) {
+    // $top: if(isNull(map-get($keys, top)), 0, map-get($keys, 'top'));
+    // $left: if(isNull(map-get($keys, left)), 0, map-get($keys, 'left'));
+    // $bottom: if(isNull(map-get($keys, bottom)), 0, map-get($keys, 'bottom'));
+    // $right: if(isNull(map-get($keys, right)), 0, map-get($keys, 'right'));
+    // $settings: ($top, $right, $bottom, $left);
+
+    #{$type}: {
+        @each $key, $value in $keys {
+            @if ($value != 0 and $value != null) {
+                #{$key}: $value;
+            }
+        }
+    }
+
+    @if ($last == false) {
+        @each $key, $value in $keys {
+            @if ($value != 0 and $value != null) {
+                &:last-child {
+                    #{$type}-#{$key}: 0;
+                }
+            }
+        }
+    }
+}

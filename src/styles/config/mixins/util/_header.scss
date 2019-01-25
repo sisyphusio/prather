@@ -1,0 +1,15 @@
+/*--------------------------------------------------------*\
+    Header
+\*--------------------------------------------------------*/
+
+@mixin header($margin: false) {
+    width: 100%;
+    margin-bottom: 5rem;
+    @include m(640) {
+        margin-bottom: 3.5rem;
+    }
+
+    > h1 + p {
+        margin-top: 1.25rem;
+    }
+}

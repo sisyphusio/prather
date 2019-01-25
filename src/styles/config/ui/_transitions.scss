@@ -1,0 +1,11 @@
+/*--------------------------------------------------------*\
+	Transitions
+\*--------------------------------------------------------*/
+
+$transition--opacity: opacity 0.25s ease-in-out; 
+$transition--link: 
+	background-color 0.25s ease-in-out,
+	border-color 0.25s ease-in-out,
+	color 0.25s ease-in-out,
+	fill 0.25s ease-in-out;
+$transition--header: all 0.5s ease;

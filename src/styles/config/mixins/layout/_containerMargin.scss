@@ -1,0 +1,40 @@
+/*--------------------------------------------------------*\
+    Container Margin
+        - Deprecated?
+\*--------------------------------------------------------*/
+
+@mixin containerMargin($style, $add: 0) {
+    @if ($add != 0) {
+        #{$style}: calc(3.5rem + #{$add});
+
+        @include m(1024) {
+            #{$style}: calc(3rem + #{$add});
+        }
+        @include m(768) {
+            #{$style}: calc(2.75rem + #{$add});
+        }
+        @include m(640) {
+            #{$style}: calc(2rem + #{$add});
+        }
+        @include m(480) {
+            #{$style}: calc(1.5rem + #{$add});
+        }
+    }
+
+    @else {
+        #{$style}: 3.5rem;
+
+        @include m(1024) {
+            #{$style}: 3rem;
+        }
+        @include m(768) {
+            #{$style}: 2.75rem;
+        }
+        @include m(640) {
+            #{$style}: 2rem;
+        }
+        @include m(480) {
+            #{$style}: 1.5rem;
+        }
+    }
+}

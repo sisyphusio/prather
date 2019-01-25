@@ -1,0 +1,46 @@
+/*--------------------------------------------------------*\
+	Logo
+\*--------------------------------------------------------*/
+
+$logoResponsive: (
+    (768, 15rem),
+    (640, 13.5rem),
+    (480, 12rem),
+    (375, 11rem),
+    (320, 10rem),
+);
+
+.logo {
+    &, svg {
+        width: 15rem;
+        @include m(640) {
+            width: 12rem;
+        }
+    }
+
+    &__container {
+        position: relative;
+
+        &--header {}
+        &--footer {}
+    }
+
+    &--small {
+        svg {
+            width: 100%;
+            max-width: 12rem;
+        }
+    }
+
+    &--medium {
+        svg {
+            width: 100%;
+            max-width: 18rem;
+            @each $break, $width in $logoResponsive {
+                @include m($break) {
+                    max-width: #{$width};
+                }
+            }
+        }
+    }
+}

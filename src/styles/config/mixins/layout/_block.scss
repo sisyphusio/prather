@@ -1,0 +1,18 @@
+/*--------------------------------------------------------*\
+    Block
+\*--------------------------------------------------------*/
+
+@mixin block($padding: 'auto') {
+    width: 100%;
+    position: relative;
+    z-index: 5;
+    @include background();
+
+    @if ($padding != null and $padding != 'auto') {
+        padding: 0;
+    }
+
+    @else {
+        @include containerSpacing('y');
+    }
+}

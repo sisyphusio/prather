@@ -1,0 +1,16 @@
+/*--------------------------------------------------------*\
+    Links
+\*--------------------------------------------------------*/
+
+@mixin links($prop: all, $color: $green, $hover: $green--dark) {
+    @include transition(#{$prop});
+    color: #{$color};
+
+    &:not(.button) {
+        &:hover,
+        &:focus,
+        &:active {
+            color: #{$hover};
+        }
+    }
+}

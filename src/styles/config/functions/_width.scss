@@ -1,0 +1,19 @@
+/*--------------------------------------------------------*\
+    Width
+        - Output width/margin combos for grid-type
+        structures.
+        - IE version subtracts _1px_ from the width due to
+        normal IE tomfoolery.
+\*--------------------------------------------------------*/
+
+@function width($rows, $margin) {
+    $width: 100% / $rows;
+    $margin: $margin * (($rows - 1) / $rows);
+    @return calc(#{$width} - #{$margin});
+}
+
+@function width--IE($rows, $margin) {
+    $width: 100% / $rows;
+    $margin: $margin * (($rows - 1) / $rows);
+    @return calc(#{$width} - 1px - #{$margin});
+}

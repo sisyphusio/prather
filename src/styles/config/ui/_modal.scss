@@ -1,0 +1,153 @@
+/*--------------------------------------------------------*\
+	Modal
+\*--------------------------------------------------------*/
+
+.modal {
+	position: fixed;
+	transform: translate(-50%, calc(-50% + 10rem));
+	left: 50%;
+	top: 50%;
+	max-width: 80rem;
+	width: 85%;
+	opacity: 0;
+	visibility: hidden;
+	z-index: -1;
+	transition: all 0.25s ease;
+	background-color: #fff;
+	padding: 3.5rem 2rem;
+
+	@include m(848) {
+		padding: 1.75rem;
+	}
+	@include m(768) {
+		width: 95%;
+		padding: 1.5rem;
+	}
+
+	iframe, object, embed {
+		display: none;
+	}
+
+	&--visible {
+		visibility: visible;
+		transform: translate(-50%, -50%);
+		opacity: 1;
+		z-index: 999;
+
+		iframe, object, embed {
+			display: block;
+			margin: 0 auto;
+		}
+	}
+
+	&--large {
+		transform: translate3d(-50%, 0, 0);
+		position: absolute;
+	}
+
+	&__content {
+		width: 100%;
+	}
+
+	&--video {
+		width: auto;
+		max-width: 80%;
+		height: auto;
+		padding: 0;
+		margin: 0;
+		border: 0;
+	}
+
+	&__trigger {
+		cursor: pointer;
+		z-index: 100;
+	}
+}
+
+.modal__overlay {
+	visibility: hidden;
+	display: block;
+	z-index: 998;
+	opacity: 0;
+	background: rgba($black, 0.75);
+	position: fixed;
+	overflow: auto;
+	overflow-x: hidden;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	transition: all 0.15s ease-in;
+
+	&--active {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&--activeNav {
+		opacity: 1;
+		visibility: visible;
+		z-index: 95;
+	}
+}
+
+div.modal__close {
+	@include button--close($blue);
+}
+
+/*--------------------------------------------------------*\
+    Outlet
+\*--------------------------------------------------------*/
+
+.modal--outlet {
+    @include m(480) {
+        padding-top: 3rem;
+    }
+    .modal {
+        &__image {
+            width: 100%;
+            max-width: 24rem;
+            margin: 0 auto;
+            margin-bottom: 1rem;
+
+            @include m(480) {
+                max-width: 16rem;
+            }
+        }
+
+        &__content {
+            width: 100%;
+            max-width: 48rem;
+            margin: 0 auto;
+            text-align: center;
+            @include body(1rem);
+            margin-bottom: 1.5rem;
+
+            @include m(480) {
+                font-size: 0.875rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        &__close {
+            @include m(440) {
+                top: 1rem;
+                right: 1rem;
+            }
+        }
+    }
+    .modal__image {
+
+    }
+
+    .svg--logo {
+        path {
+            fill: $green;
+        }
+    }
+}
+
+
+
+
+
