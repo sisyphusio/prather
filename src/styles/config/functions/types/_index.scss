@@ -1,0 +1,51 @@
+/*--------------------------------------------------------*\
+    type checking functions for sass
+\*--------------------------------------------------------*/
+
+@function isBoolean($var) {
+    @return type-of($var) == 'bool';
+}
+
+@function isMap($var) {
+    @return type-of($var) == 'map';
+}
+
+@function isString($var) {
+    @return type-of($var) == 'string';
+}
+
+@function isNull($var) {
+    @return type-of($var) == null;
+}
+
+@function isDefined($var) {
+    @return type-of($var) != null;
+}
+
+@function isList($var) {
+    @return type-of($var) == 'list';
+}
+
+@function isNumber($var) {
+    @return type-of($var) == 'number';
+}
+
+@function isColor($var) {
+    @return type-of($var) == 'color';
+}
+
+/*--------------------------------------------------------*\
+    type checking functions for sass (specificity)
+\*--------------------------------------------------------*/
+
+@function isPercentage($var) {
+    @return isNumber($var) and unit($var) == '%';
+}
+
+@function isInteger($var) {
+    @return isNumber($var) and round($var) == $var;
+}
+
+@function isTime($var) {
+    @return isNumber($var) and index('ms' 's', unit($var)) != null;
+}

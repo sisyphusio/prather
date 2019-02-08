@@ -1,0 +1,15 @@
+/*--------------------------------------------------------*\
+    Padding
+\*--------------------------------------------------------*/
+
+@mixin padding($orientation, $value) {
+    @if ($orientation == 'x') {
+        padding-left: #{$value};
+        padding-right: #{$value};
+    }
+
+    @elseif ($orientation == 'y') {
+        padding-top: #{$value};
+        padding-bottom: #{$value};
+    }
+}

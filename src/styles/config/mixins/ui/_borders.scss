@@ -1,0 +1,72 @@
+/*--------------------------------------------------------*\
+    Borders
+\*--------------------------------------------------------*/
+
+@mixin border($position: 'all', $width: 'small', $color: $grey--light, $style: solid, $radius: 0, $last: false) {
+
+    // Widths
+    $borderWidth: 0;
+    @if ($width == 'small') {
+        $borderWidth: 0.0625rem;
+    }
+
+    @else if ($width == 'medium') {
+        $borderWidth: 0.125rem;
+    }
+
+    @else if ($width == 'large') {
+        $borderWidth: 0.25rem;
+    }
+
+    @else {
+        $borderWidth: $width;
+    }
+
+    // Position
+    @if ($position != 'all') {
+        @if (type-of($position) == list) {
+            @each $pos in $position {
+                $pos: unquote($pos);
+                border-#{$pos}: $borderWidth $style $color;
+            }
+        }
+
+        @else {
+            $position: unquote($position);
+            border-#{$position}: $borderWidth $style $color;
+        }
+    }
+
+    @else if ($position == 'all') {
+        border: $borderWidth $style $color;
+    }
+
+    // Border Radius
+    @if ($radius != 0) {
+        border-radius: $radius;
+    }
+
+    @if ($last) {
+        &:last-child {
+            border: 0;
+        }
+    }
+}
+
+/*--------------------------------------------------------*\
+    Borders => Separator
+\*--------------------------------------------------------*/
+
+@mixin separator($borderWidth: 0.0625rem, $padding: 0.75rem, $color: $body) {
+    border-right: #{$borderWidth} solid $color;
+    padding: 0 #{$padding};
+
+    &:first-child {
+        padding-left: 0;
+    }
+
+    &:last-child {
+        padding-right: 0;
+        border-right: 0;
+    }
+}

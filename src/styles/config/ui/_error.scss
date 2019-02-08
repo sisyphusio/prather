@@ -1,0 +1,22 @@
+/*--------------------------------------------------------*\
+	Error
+\*--------------------------------------------------------*/
+
+.block {
+    &--error {
+        background-color: $white;
+
+        .container {
+            width: 100%;
+            height: 100%;
+            @include image('error/error.svg');
+            @include background($size: contain);
+
+            .error__content {
+                @include flex($justify: center, $align: center, $wrap: wrap);
+                height: 100%;
+                text-align: center;
+            }
+        }
+    }
+}

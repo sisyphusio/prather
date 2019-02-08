@@ -6,6 +6,8 @@ import Header from './components/Header'
 import Page from './containers/page'
 import { fetchPages } from './actions/wp'
 
+import './styles/app.scss'
+
 class App extends Component {
     componentWillMount() {
         this.props.dispatch(fetchPages())

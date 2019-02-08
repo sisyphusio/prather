@@ -1,0 +1,84 @@
+/*--------------------------------------------------------*\
+    background
+
+    <attachment> => scroll | fixed | local
+    <box> => border-box | padding-box | content-box
+    <background-color> => <rgb()> | <rgba()> | <hsl()> | <hsla()> | <hex-color> | <named-color> | currentcolor
+    <bg-image>
+        - <url> | <image()> | <image-set()> | <element()> | <cross-fade()> | <gradient>
+        <image()> => image( [ [ <image> | <string> ]? , <color>? ]! )
+        <image-set()> => image-set( <image-set-option># )
+        <element()> => element( <id-selector> )
+        <cross-fade()> => cross-fade( <cf-mixing-image> , <cf-final-image>? )
+        <gradient> => <linear-gradient()> | <repeating-linear-gradient()> | <radial-gradient()> | <repeating-radial-gradient()>
+    <position>
+        => [
+            [ left | center | right | top | bottom | <length-percentage> ] |
+            [ left | center | right | <length-percentage> ]
+            [ top | center | bottom | <length-percentage> ] |
+            [ center | [ left | right ] <length-percentage>? ] && [ center | [ top | bottom ] <length-percentage>? ]
+        ]
+    <repeat-style> => repeat-x | repeat-y | [ repeat | space | round | no-repeat ]{1,2}
+    <bg-size> => [ <length-percentage> | auto ]{1,2} | cover | contain
+\*--------------------------------------------------------*/
+
+@function debugVars($args: ()) {
+    @each $key, $value in $args {
+        @debug($value);
+    }
+}
+
+@mixin background($config: (), $x: center, $y: center, $repeat: no-repeat, $size: cover) {
+    // $config: extend(
+    //     (
+    //         attachment: scroll,
+    //         box: border-box,
+    //         color: $white,
+    //         image: (
+    //             imageURL: null,
+    //             absolute: false,
+    //         ),
+    //         position: (
+    //             x: center,
+    //             y: center,
+    //         ),
+    //         repeat: no-repeat,
+    //         size: cover,
+    //     ), $config
+    // );
+
+    // @if ($config) {
+    //     $attachment: map-get($config, attachment);
+    //     $box: map-get($config, box);
+    //     $color: map-get($config, color);
+    //     $image: map-get($config, image);
+    //     $imageURL: map-get($image, imageURL);
+    //     $absoluteURL: map-get($image, absolute);
+    //     $position: map-get($config, position);
+    //     $x: map-get($position, x);
+    //     $y: map-get($position, y);
+    //     $repeat: map-get($config, repeat);
+    //     $size: map-get($config, size);
+    //     $debug: map-get($config, debug);
+
+    //     #{$imagedir}#{$filename}
+
+    //     background: {
+    //         attachment: $attachment;
+    //         box: $box;
+    //         color: $color;
+    //         image: if($absoluteURL, url($imageURL), url(#{imagesPath}#{$imageURL});
+    //         position: $x $y;
+    //         repeat: $repeat;
+    //         size: $size;
+    //     }
+    // }
+
+    // @else {
+
+    // }
+
+    background-repeat: $repeat;
+    background-position: $x $y;
+    background-size: $size;
+}

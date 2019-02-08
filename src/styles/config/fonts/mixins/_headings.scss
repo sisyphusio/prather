@@ -1,0 +1,9 @@
+/*--------------------------------------------------------*\
+    fonts => headings (gothic)
+\*--------------------------------------------------------*/
+
+@import "raw";
+
+@mixin heading($size, $weight: 400, $lineHeight: 1.125) {
+    @include gothic($size, $weight, $lineHeight);
+}
